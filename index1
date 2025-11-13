@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Syed Taha Fatmi | Portfolio</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: #f8f9fa;
+      color: #222;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    header {
+      background: white;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+    }
+    .logo {
+      font-size: 1.5rem;
+      color: #0077b6;
+      font-weight: 600;
+    }
+    nav a {
+      margin-left: 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 500;
+    }
+    nav a:hover {
+      color: #0077b6;
+    }
+
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+    }
+    .bar {
+      width: 25px;
+      height: 3px;
+      background-color: #333;
+      margin: 4px 0;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 4rem 0;
+      background: #e9f5ff;
+    }
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+    }
+    .hero-text h2 {
+      font-size: 2rem;
+    }
+    .hero-text span {
+      color: #0077b6;
+    }
+    .hero-text p {
+      margin: 1rem 0;
+    }
+    .btn {
+      display: inline-block;
+      background: #0077b6;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+    .hero-img img {
+      width: 250px;
+      border-radius: 50%;
+    }
+
+    .about, .projects, .services, .contact {
+      padding: 3rem 0;
+    }
+    .about p {
+      margin: 1rem 0;
+      line-height: 1.6;
+    }
+    .skills div {
+      margin-bottom: 0.5rem;
+    }
+
+    .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 1rem;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .project-card:hover {
+      transform: translateY(-5px);
+    }
+    .project-card img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .project-card a {
+      display: inline-block;
+      margin-top: 0.5rem;
+      color: #0077b6;
+      text-decoration: none;
+    }
+
+    .service-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+    .service-card {
+      background: white;
+      border-radius: 10px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .contact form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .contact input, .contact textarea {
+      padding: 0.8rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    .contact .btn {
+      align-self: flex-start;
+    }
+    .socials {
+      margin-top: 1.5rem;
+    }
+    .socials a {
+      margin-right: 1rem;
+      color: #0077b6;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background: #f1f1f1;
+      font-size: 0.9rem;
+      color: #444;
+    }
+
+    @media (max-width: 768px) {
+      .hero-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero-img img {
+        width: 180px;
+        margin-top: 1rem;
+      }
+      nav {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 70px;
+        right: 0;
+        width: 100%;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      }
+      nav a {
+        margin: 1rem 0;
+        text-align: center;
+      }
+      .menu-toggle {
+        display: flex;
+      }
+      nav.active {
+        display: flex;
+      }
+    }
+  </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("YOUR_EMAILJS_PUBLIC_KEY");
+    })();
+  </script>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <h1 class="logo">Taha Fatmi</h1>
+      <nav id="nav-links">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <div class="menu-toggle" id="menu-toggle">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <h2>Hi, I'm <span>Syed Taha Fatmi</span></h2>
+        <p>A Web Developer, Data Analyst, and AI/ML Enthusiast</p>
+        <a href="#contact" class="btn">Hire Me</a>
+      </div>
+      <div class="hero-img">
+        <img src="your-photo.jpg" alt="Syed Taha Fatmi">
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about">
+    <div class="container">
+      <h2>About Me</h2>
+      <p>
+        I'm passionate about building efficient web applications and intelligent data-driven solutions. 
+        My experience covers front-end development, data analysis, and AI/ML model creation.
+      </p>
+      <div class="skills">
+        <div><strong>Web Development:</strong> HTML, CSS, JavaScript, React, Tailwind</div>
+        <div><strong>Data Science:</strong> Python, Pandas, NumPy, Matplotlib</div>
+        <div><strong>AI/ML:</strong> Scikit-learn, TensorFlow, NLP, Recommendation Systems</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="project-grid">
+        <div class="project-card">
+          <img src="images/project1.jpg" alt="3D Portfolio Website">
+          <h3>3D Portfolio Website</h3>
+          <p>Interactive 3D portfolio with smooth animations and modern design.</p>
+          <a href="https://taha-portfolio-ten.vercel.app" target="_blank">View Project</a>
+        </div>
+        <div class="project-card">
+          <img src="images/project2.jpg" alt="AI Paper Recommender">
+          <h3>Research Paper Recommendation System</h3>
+          <p>Recommends academic papers using similarity metrics and metadata.</p>
+          <a href="#" target="_blank">View Code</a>
+        </div>
+        <div class="project-card">
+          <img src="images/project3.jpg" alt="Data Dashboard">
+          <h3>Data Analytics Dashboard</h3>
+          <p>Visual dashboard built with Python and Power BI for analytics insights.</p>
+          <a href="#" target="_blank">View Code</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Services</h2>
+      <div class="service-grid">
+        <div class="service-card">
+          <h3>Web Development</h3>
+          <p>Responsive websites and full-stack web apps built for performance and impact.</p>
+        </div>
+        <div class="service-card">
+          <h3>Data Analytics</h3>
+          <p>Data visualization, cleaning, and analysis for actionable business insights.</p>
+        </div>
+        <div class="service-card">
+          <h3>AI & Machine Learning</h3>
+          <p>Predictive models, automation tools, and smart systems for businesses.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Me</h2>
+      <p>Let's collaborate or discuss your project ideas.</p>
+      <form id="contact-form">
+        <input type="text" id="name" name="name" placeholder="Your Name" required />
+        <input type="email" id="email" name="email" placeholder="Your Email" required />
+        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+      <div class="socials">
+        <a href="https://linkedin.com" target="_blank">LinkedIn</a>
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="mailto:your.email@example.com">Email</a>
+        <a href="https://fiverr.com" target="_blank">Fiverr</a>
+        <a href="https://upwork.com" target="_blank">Upwork</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2025 Syed Taha Fatmi. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById("menu-toggle");
+    const navLinks = document.getElementById("nav-links");
+
+    menuToggle.addEventListener("click", () => {
+      navLinks.classList.toggle("active");
+    });
+
+    // EmailJS send
+    document.getElementById("contact-form").addEventListener("submit", function(e) {
+      e.preventDefault();
+      emailjs.send("YOUR_SERVICE_ID", "YOUR_TEMPLATE_ID", {
+        from_name: document.getElementById("name").value,
+        from_email: document.getElementById("email").value,
+        message: document.getElementById("message").value,
+      })
+      .then(() => {
+        alert("Message sent successfully!");
+        e.target.reset();
+      }, (error) => {
+        alert("Failed to send message. Please try again later.");
+        console.error(error);
+      });
+    });
+  </script>
+</body>
+</html>
